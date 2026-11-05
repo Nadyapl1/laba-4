@@ -1,0 +1,427 @@
+
+POST http://localhost:8080/api/users
+Content-Type: application/json
+
+{
+  "name": "Анна Иванова",
+  "email": "anna@example.com"
+}
+
+### Получить всех пользователей
+GET http://localhost:8080/api/users
+
+### Получить пользователя по ID
+GET http://localhost:8080/api/users/1
+
+### Изменить пользователя
+PATCH http://localhost:8080/api/users/1
+Content-Type: application/json
+
+{
+  "name": "Анна Петрова"
+}
+
+### Удалить пользователя
+DELETE http://localhost:8080/api/users/1
+
+### Создать поставщика
+POST http://localhost:8080/api/suppliers
+Content-Type: application/json
+
+{
+  "name": "ООО Ромашка",
+  "category": "Канцелярские товары",
+  "approved": true
+}
+
+### Получить всех поставщиков
+GET http://localhost:8080/api/suppliers
+
+### Получить поставщика по ID
+GET http://localhost:8080/api/suppliers/1
+
+### Изменить поставщика
+PATCH http://localhost:8080/api/suppliers/1
+Content-Type: application/json
+
+{
+  "name": "ООО Ромашка Плюс"
+}
+
+### Удалить поставщика
+DELETE http://localhost:8080/api/suppliers/1
+
+
+### Создать поставщика
+POST http://localhost:8080/api/suppliers
+Content-Type: application/json
+
+{
+  "name": "ООО Ромашка",
+  "category": "Канцелярские товары",
+  "approved": true
+}
+
+
+### Создать заявку на закупку
+POST http://localhost:8080/api/purchase-requests
+Content-Type: application/json
+
+{
+  "authorId": 1,
+  "description": "Бумага и ручки для офиса",
+  "maxAmount": 15000,
+  "status": "NEW"
+}
+
+### Создать пользователя для заявки
+POST http://localhost:8080/api/users
+Content-Type: application/json
+
+{
+  "name": "Анна Иванова",
+  "email": "anna@example.com"
+}
+
+### Получить все заявки
+GET http://localhost:8080/api/purchase-requests
+
+### Получить заявку по ID
+GET http://localhost:8080/api/purchase-requests/1
+
+### Изменить заявку
+PATCH http://localhost:8080/api/purchase-requests/1
+Content-Type: application/json
+
+{
+  "description": "Бумага, ручки и папки для офиса"
+}
+
+### Удалить заявку
+DELETE http://localhost:8080/api/purchase-requests/1
+
+### Создать поставщика
+POST http://localhost:8080/api/suppliers
+Content-Type: application/json
+
+{
+  "name": "ООО Ромашка",
+  "category": "Канцелярские товары",
+  "approved": true
+}
+
+### Получить всех пользователей
+GET http://localhost:8080/api/users
+
+### Создать заявку для коммерческого предложения
+POST http://localhost:8080/api/purchase-requests
+Content-Type: application/json
+
+{
+  "authorId": 1,
+  "description": "Закупка канцелярских товаров",
+  "maxAmount": 15000,
+  "status": "NEW"
+}
+
+### Создать коммерческое предложение
+POST http://localhost:8080/api/commercial-offers
+Content-Type: application/json
+
+{
+  "purchaseRequestId": 2,
+  "supplierId": 2,
+  "price": 12000,
+  "deliveryDays": 5,
+  "validUntil": "2026-12-31T23:59:59"
+}
+
+### Получить все коммерческие предложения
+GET http://localhost:8080/api/commercial-offers
+
+### Получить коммерческое предложение по ID
+GET http://localhost:8080/api/commercial-offers/1
+
+### Изменить цену коммерческого предложения
+PATCH http://localhost:8080/api/commercial-offers/1
+Content-Type: application/json
+
+{
+  "price": 11500
+}
+
+### Удалить коммерческое предложение
+DELETE http://localhost:8080/api/commercial-offers/1
+
+### Создать коммерческое предложение для заказа
+POST http://localhost:8080/api/commercial-offers
+Content-Type: application/json
+
+{
+  "purchaseRequestId": 2,
+  "supplierId": 2,
+  "price": 11500,
+  "deliveryDays": 5
+}
+
+### Создать заказ на закупку
+POST http://localhost:8080/api/purchase-orders
+Content-Type: application/json
+
+{
+  "purchaseRequestId": 2,
+  "commercialOfferId": 2,
+  "status": "CREATED"
+}
+
+### Получить все заказы
+GET http://localhost:8080/api/purchase-orders
+
+### Получить заказ по ID
+GET http://localhost:8080/api/purchase-orders/1
+
+### Изменить статус заказа
+PATCH http://localhost:8080/api/purchase-orders/1
+Content-Type: application/json
+
+{
+  "status": "APPROVED"
+}
+
+### Удалить заказ
+DELETE http://localhost:8080/api/purchase-orders/1
+
+### Проверка несуществующего пользователя
+GET http://localhost:8080/api/users/9999
+
+### Проверка заявки с несуществующим автором
+POST http://localhost:8080/api/purchase-requests
+Content-Type: application/json
+
+{
+  "authorId": 9999,
+  "description": "Тестовая заявка",
+  "maxAmount": 1000,
+  "status": "NEW"
+}
+
+### Создать заказ для проверки связей
+POST http://localhost:8080/api/purchase-orders
+Content-Type: application/json
+
+{
+  "purchaseRequestId": 2,
+  "commercialOfferId": 2,
+  "status": "CREATED"
+}
+
+### Получить все заявки
+GET http://localhost:8080/api/purchase-requests
+
+### Создать заявку на закупку
+POST http://localhost:8080/api/purchase-requests
+Content-Type: application/json
+
+{
+  "authorId": 1,
+  "description": "Закупка канцелярских товаров",
+  "maxAmount": 15000,
+  "status": "NEW"
+}
+
+### Создать пользователя
+POST http://localhost:8080/api/users
+Content-Type: application/json
+
+{
+  "name": "Анна Иванова",
+  "email": "anna@example.com"
+}
+
+### Получить всех поставщиков
+GET http://localhost:8080/api/suppliers
+
+### Создать поставщика
+POST http://localhost:8080/api/suppliers
+Content-Type: application/json
+
+{
+  "name": "ООО Ромашка",
+  "category": "Канцелярские товары",
+  "approved": true
+}
+
+### Создать коммерческое предложение
+POST http://localhost:8080/api/commercial-offers
+Content-Type: application/json
+
+{
+  "purchaseRequestId": 1,
+  "supplierId": 1,
+  "price": 11500,
+  "deliveryDays": 5
+}
+
+### Создать заказ для проверки связей
+POST http://localhost:8080/api/purchase-orders
+Content-Type: application/json
+
+{
+  "purchaseRequestId": 1,
+  "commercialOfferId": 1,
+  "status": "CREATED"
+}
+
+### Удалить заявку и связанные объекты
+DELETE http://localhost:8080/api/purchase-requests/1
+
+### Проверить оставшиеся коммерческие предложения
+GET http://localhost:8080/api/commercial-offers
+
+### Проверить оставшиеся заказы
+GET http://localhost:8080/api/purchase-orders
+### Проверка несуществующей заявки
+POST http://localhost:8080/api/commercial-offers
+Content-Type: application/json
+
+{
+  "purchaseRequestId": 9999,
+  "supplierId": 1,
+  "price": 5000,
+  "deliveryDays": 3
+}
+### Изменить статус одобрения поставщика
+PATCH http://localhost:8080/api/suppliers/1
+Content-Type: application/json
+
+{
+  "approved": false
+}
+### Создать поставщика
+POST http://localhost:8080/api/suppliers
+Content-Type: application/json
+
+{
+  "name": "ООО Ромашка",
+  "category": "Канцелярские товары",
+  "approved": true
+}
+### Изменить статус одобрения поставщика
+PATCH http://localhost:8080/api/suppliers/1
+Content-Type: application/json
+
+{
+  "approved": false
+}
+
+### Создать коммерческое предложение для проверки удаления поставщика
+POST http://localhost:8080/api/commercial-offers
+Content-Type: application/json
+
+{
+  "purchaseRequestId": 1,
+  "supplierId": 1,
+  "price": 5000,
+  "deliveryDays": 3
+}
+
+### Создать пользователя
+POST http://localhost:8080/api/users
+Content-Type: application/json
+
+{
+  "name": "Анна Иванова",
+  "email": "anna@example.com"
+}
+
+### Создать заявку на закупку
+POST http://localhost:8080/api/purchase-requests
+Content-Type: application/json
+
+{
+  "authorId": 1,
+  "description": "Проверка удаления поставщика",
+  "maxAmount": 15000,
+  "status": "NEW"
+}
+
+### Создать заявку для проверки удаления поставщика
+POST http://localhost:8080/api/purchase-requests
+Content-Type: application/json
+
+{
+  "authorId": 1,
+  "description": "Проверка удаления поставщика",
+  "maxAmount": 15000,
+  "status": "NEW"
+}
+
+### Создать поставщика для проверки удаления
+POST http://localhost:8080/api/suppliers
+Content-Type: application/json
+
+{
+  "name": "ООО Ромашка",
+  "category": "Канцелярские товары",
+  "approved": true
+}
+
+### Создать коммерческое предложение для проверки удаления поставщика
+POST http://localhost:8080/api/commercial-offers
+Content-Type: application/json
+
+{
+  "purchaseRequestId": 1,
+  "supplierId": 2,
+  "price": 5000,
+  "deliveryDays": 3
+}
+
+### Создать заказ для проверки удаления поставщика
+POST http://localhost:8080/api/purchase-orders
+Content-Type: application/json
+
+{
+  "purchaseRequestId": 1,
+  "commercialOfferId": 1,
+  "status": "CREATED"
+}
+
+### Удалить поставщика № 2
+DELETE http://localhost:8080/api/suppliers/2
+
+### Проверить коммерческие предложения
+GET http://localhost:8080/api/commercial-offers
+
+### Проверить заказы
+GET http://localhost:8080/api/purchase-orders
+### Принять коммерческое предложение № 3 и создать заказ
+POST http://localhost:8080/api/purchase-orders/accept-offer/3
+### Проверка закупочного заказа
+GET http://localhost:8080/api/purchase-orders/2
+###
+GET http://localhost:8080/api/purchase-requests/2
+###
+GET http://localhost:8080/api/purchase-orders
+###
+POST http://localhost:8080/api/purchase-orders/accept-offer/3
+###
+GET http://localhost:8080/api/purchase-orders/2
+###
+POST http://localhost:8080/api/purchase-orders/accept-offer/3
+###
+GET http://localhost:8080/api/commercial-offers/2
+###
+POST http://localhost:8080/api/purchase-orders/accept-offer/2
+###
+GET http://localhost:8080/api/purchase-orders
+###
+POST http://localhost:8080/api/purchase-requests
+Content-Type: application/json
+
+{
+  "authorId": 1,
+  "description": "Закупка тестового оборудования",
+  "maxAmount": 50000,
+  "status": "OPEN"
+}
